@@ -4,7 +4,8 @@ from transformers import pipeline
 
 def askGpt(prompt):
     messages=[{"role": "user", "content": prompt}]    
-    pipe = pipeline("text-generation", model="Saxo/Linkbricks-Horizon-AI-Korean-Gemma-2-sft-dpo-27B")
+    # pipe = pipeline("text-generation", model="Saxo/Linkbricks-Horizon-AI-Korean-Gemma-2-sft-dpo-27B")
+    pipe = pipeline("text-generation", model="openchat/openchat_3.5")
     gptResponse = pipe(messages)
     # pipe = pipeline("summarization")
     # gptResponse = pipe(prompt)
