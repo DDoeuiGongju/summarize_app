@@ -2,17 +2,22 @@ import streamlit as st
 from transformers import pipeline
 
 
-def askGpt(prompt):
-    messages=[{"role": "user", "content": prompt}]    
-    # pipe = pipeline("text-generation", model="Saxo/Linkbricks-Horizon-AI-Korean-Gemma-2-sft-dpo-27B")
-    pipe = pipeline("text-generation", model="openchat/openchat_3.5")
-    gptResponse = pipe(messages)
+@st.cache_resource
+def load_pipeline():
     # pipe = pipeline("summarization")
+    # pipe = pipeline("text-generation", model="Saxo/Linkbricks-Horizon-AI-Korean-Gemma-2-sft-dpo-27B")
+    return pipeline("text-generation", model="openchat/openchat_3.5")
+
+
+def askGpt(prompt, pipe):
+    messages=[{"role": "user", "content": prompt}]    
+    gptResponse = pipe(messages)
     # gptResponse = pipe(prompt)
     return gptResponse
     
 def main():
     st.set_page_config(page_title="요약 프로그램")
+    pipe = load_pipeline()
     
     with st.sidebar:
         st.text_input(label="선택")
@@ -33,7 +38,7 @@ def main():
         - Summarize in 3 lines.
         - Use the format of a bullet point.
     -text : {text}'''
-        st.info(askGpt(prompt))
+        st.info(askGpt(prompt, pipe))
 
 if __name__=="__main__":
     main()
