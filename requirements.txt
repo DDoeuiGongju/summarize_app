@@ -47,9 +47,9 @@ toml==0.10.2
 # torch==2.5.1+cpu
 # torchaudio==2.5.1+cpu
 # torchvision==0.20.1+cpu
-pytorch==2.5.0 
-torchvision==0.20.0 
-torchaudio==2.5.0
+pytorch==2.2.0 
+torchvision==0.17.0 
+torchaudio==2.2.0
 tornado==6.4.2
 tqdm==4.67.1
 transformers==4.46.3
