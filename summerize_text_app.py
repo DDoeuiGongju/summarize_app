@@ -10,11 +10,15 @@ def load_pipeline():
     return pipeline("text-generation", model="EleutherAI/gpt-neo-1.3B")
 
 
+# def askGpt(prompt, pipe):
+#     messages=[{"role": "user", "content": prompt}]    
+#     gptResponse = pipe(messages)
+#     # gptResponse = pipe(prompt)
+#     return gptResponse
+
 def askGpt(prompt, pipe):
-    messages=[{"role": "user", "content": prompt}]    
-    gptResponse = pipe(messages)
-    # gptResponse = pipe(prompt)
-    return gptResponse
+    response = pipe(prompt, max_length=100, num_return_sequences=1)
+    return response[0]["generated_text"]  # 반환된 텍스트만 출력
     
 def main():
     st.set_page_config(page_title="요약 프로그램")
