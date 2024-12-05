@@ -18,7 +18,7 @@ def load_pipeline():
 
 def askGpt(prompt, pipe):
     response = pipe(prompt, max_new_tokens=50, num_return_sequences=1, pad_token_id=50256)
-    return response  # 반환된 텍스트만 출력
+    return response[0]['summary_text']  # 반환된 텍스트만 출력
     
 def main():
     st.set_page_config(page_title="요약 프로그램")
