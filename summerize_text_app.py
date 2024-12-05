@@ -17,7 +17,7 @@ def load_pipeline():
 #     return gptResponse
 
 def askGpt(prompt, pipe):
-    response = pipe(prompt, max_length=100, num_return_sequences=1)
+    response = pipe(prompt, max_new_tokens=50, num_return_sequences=1)
     return response[0]["generated_text"]  # 반환된 텍스트만 출력
     
 def main():
