@@ -6,7 +6,8 @@ from transformers import pipeline
 def load_pipeline():
     # pipe = pipeline("summarization")
     # pipe = pipeline("text-generation", model="Saxo/Linkbricks-Horizon-AI-Korean-Gemma-2-sft-dpo-27B")
-    return pipeline("text-generation", model="openchat/openchat_3.5")
+    # return pipeline("text-generation", model="openchat/openchat_3.5")
+    return pipeline("text-generation", model="EleutherAI/gpt-neo-1.3B")
 
 
 def askGpt(prompt, pipe):
